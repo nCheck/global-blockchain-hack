@@ -13,7 +13,7 @@ module.exports.getRating = async (req, res)=>{
     //Actually get from Blockchain
     const contract = createContract();
 
-    var rating = await contract.methods.getRating(1).call()
+    var rating = await contract.methods.getRating(1).call();
     res.send({rating : rating});
 
 
@@ -31,11 +31,13 @@ module.exports.getRating = async (req, res)=>{
 module.exports.acceptRequest = async (req, res)=>{
 
     var reqId = req.body.reqid,
-        ngoId = req.body.ngoId;
+        ngoId = req.body.ngoid;
     
-    await contract.methods.ngoReact(reqId, ngoId).call();
+    const contract = createContract();
 
-    res.send("Done");
+    // await web3.eth.ngoReact(reqId, ngoId);
+    await contract.methods.ngoReact(reqId,ngoId).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+    res.send({d:"Done"});
 
 
 }

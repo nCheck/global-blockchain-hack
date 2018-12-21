@@ -14,6 +14,8 @@ contract Donation {
     event userDonatedAt(
         uint id
         );
+    
+    event ngoReacted(uint id);
 
     constructor () public {
 
@@ -38,7 +40,7 @@ contract Donation {
         emit userDonatedAt(curr);
     }
     
-    function ngoReact(uint did,  uint ngoId) public {
+    function ngoReact(uint did,  uint ngoId) public returns(uint){
         uint curr = now;
         uint hist = donationStart[did];
         
@@ -49,6 +51,9 @@ contract Donation {
         if (duration < 1 days){
             rating[ngoId] += 1;
         }
+
+        emit ngoReacted(duration);
+        return duration;
     }
 
     
