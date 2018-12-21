@@ -19,6 +19,20 @@ module.exports = [
 	},
 	{
 		"constant": false,
+		"inputs": [],
+		"name": "getRating",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
 		"inputs": [
 			{
 				"name": "did",
@@ -100,8 +114,12 @@ module.exports = [
 		"name": "donationStart",
 		"outputs": [
 			{
-				"name": "",
+				"name": "time",
 				"type": "uint256"
+			},
+			{
+				"name": "status",
+				"type": "uint8"
 			}
 		],
 		"payable": false,
@@ -140,6 +158,44 @@ module.exports = [
 			{
 				"name": "",
 				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "ngoIDList",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "ngoRatings",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,

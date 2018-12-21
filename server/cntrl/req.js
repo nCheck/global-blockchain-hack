@@ -12,10 +12,7 @@ module.exports.addRequest = async (req, res)=>{
     var reqType = req.body.type,
         from = req.body.from,
         to = req.body.to,
-        location = {
-            lat : req.body.lat,
-            lon : req.body.lon
-        }
+        location = req.body.location
     
     Request.create({
         reqType : reqType,
@@ -42,14 +39,15 @@ module.exports.addRequest = async (req, res)=>{
     })
 }
 
-module.exports.getRequestOfNgo = (req, res)=>{
+module.exports.getRequestOfNgo = async (req, res)=>{
 
     var ngoName = req.params.name;
+    var ngo = await Ngo.findOne({name : ngoName});
 
     Request.find({to:ngoName} , (err , doc)=>{
         
         if( !err){
-            res.send({requests : doc});
+            res.send({requests : doc , id : ngo.ngoId});
         }
         else{
             res.send("Error")

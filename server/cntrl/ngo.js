@@ -24,9 +24,14 @@ module.exports.acceptRequest = async (req, res)=>{
     var reqId = req.body.reqid,
         ngoId = req.body.ngoid;
     
+    await Request.findOne({reqId : reqId}, (err, doc)=>{
+        doc.status = 'Accepted';
+        doc.save();
+    })
+
     const contract = createContract();
 
-    // await web3.eth.ngoReact(reqId, ngoId);
+
     await contract.methods.ngoReact(1,1).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
 
     //get the updated rating to update in db
@@ -36,7 +41,7 @@ module.exports.acceptRequest = async (req, res)=>{
 
         if(!err){
 
-            doc.rating = rating;
+            doc.rating = rating; //TODO
             doc.save();
             res.send({d:"Done"});
         }
@@ -59,10 +64,7 @@ module.exports.addNgo = async (req, res)=>{
 
     var name = req.body.name,
         address = req.body.address,
-        location = {
-            lat : req.body.lat,
-            lon : req.body.lon
-        }
+        location = req.body.location;
     
     Ngo.create({
         name : name, address : address, location : location
@@ -70,7 +72,7 @@ module.exports.addNgo = async (req, res)=>{
 
         const contract = createContract();
 
-        // await web3.eth.ngoReact(reqId, ngoId);
+        // Dummy NGO Address
         var dummyNgo = "0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E";
 
         await contract.methods.addNgo(ngoId,dummyNgo)

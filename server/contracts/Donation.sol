@@ -6,9 +6,17 @@ contract Donation {
 
     address owner;
     uint totalSupply;
+
+    enum Status {Accepted, Rejected, Pending }
+
+    struct donation {
+        uint time;
+        Status status;
+    }
+
     mapping(uint => uint) public rating;
     mapping(uint => address) public ngo;
-    mapping(uint => uint) public donationStart;
+    mapping(uint => donation) public donationStart;
     //mapping(address => uint) public balances;
     
     event userDonatedAt(
@@ -36,13 +44,13 @@ contract Donation {
 
     function userDonate (uint did) public returns (uint) {
         uint curr = now ;
-        donationStart[did] = curr;
+        donationStart[did].time = curr;
         emit userDonatedAt(curr);
     }
     
     function ngoReact(uint did,  uint ngoId) public returns(uint){
         uint curr = now;
-        uint hist = donationStart[did];
+        uint hist = donationStart[did].time;
         
         require(hist != 0, "negative history");
         

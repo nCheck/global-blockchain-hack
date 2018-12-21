@@ -17,13 +17,8 @@ var ngoSchema = new Schema({
     address : String,
 
     location: {
-        lat:{
-            type:Number
-
-        },
-        lon:{
-            type:Number
-        }
+        type : String,
+        default : "Unknown"
     }
 
 })
@@ -33,14 +28,18 @@ var ngoSchema = new Schema({
 ngoSchema.pre('save', function (next){
 
     var corp = this;
-    this.reqId = -1;
-    Counter.find({}, function (err, doc) {
-        var counter = doc[0];
-        counter.seq += 1;
-        corp.ngoId = counter.seq;
-        counter.save();
-        next(); 
-    })
+    if (this.isNew){
+
+        this.reqId = -1;
+        Counter.find({}, function (err, doc) {
+            var counter = doc[0];
+            counter.seq += 1;
+            corp.ngoId = counter.seq;
+            counter.save();
+            next(); 
+        })
+
+    }
 
 
 })

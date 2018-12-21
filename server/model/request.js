@@ -25,14 +25,15 @@ var reqSchema = new Schema({
         default : Date.now()
     },
 
-    location: {
-        lat:{
-            type:Number
+    status :{
+        type : String,
+        enum : ['Accepted', 'Rejected', 'Pending'],
+        default : 'Pending'
+    },
 
-        },
-        lon:{
-            type:Number
-        }
+    location: {
+        type : String,
+        default : "Unknown"
     }
 
 
@@ -47,14 +48,20 @@ var reqSchema = new Schema({
 reqSchema.pre('save', function (next){
 
     var corp = this;
-    this.reqId = -1;
-    Counter.find({}, function (err, doc) {
-        var counter = doc[0];
-        counter.seq += 1;
-        corp.reqId = counter.seq;
-        counter.save();
-        next(); 
-    })
+
+
+    if (this.isNew){
+
+        this.reqId = -1;
+        Counter.find({}, function (err, doc) {
+            var counter = doc[0];
+            counter.seq += 1;
+            corp.reqId = counter.seq;
+            counter.save();
+            next(); 
+        })
+
+    }
 
 
 })
