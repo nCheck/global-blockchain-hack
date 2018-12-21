@@ -8,7 +8,7 @@
             android:icon="@drawable/dashboard_icon"
             android:id="@+id/dashboard_item"/>
         <item
-            android:title="Statistics"
+            android:title="Helfy Points"
             android:icon="@drawable/stats_icon"
             android:id="@+id/statistics_item"/>
         <item

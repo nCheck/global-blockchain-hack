@@ -38,7 +38,10 @@
             android:name=".ShareJobService"
             android:enabled="true"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"></service>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".Home" />
+        <activity android:name=".Track_Expense"></activity>
     </application>
 
 </manifest>

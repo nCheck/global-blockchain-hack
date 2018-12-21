@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+//import com.collekarry.globlockhackthon.AddPost;
 import com.collekarry.globlockhackthon.AddPost;
 import com.collekarry.globlockhackthon.Model.shareData;
 import com.collekarry.globlockhackthon.R;
@@ -101,7 +102,7 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<ShareRecyclerAdap
 
             }
         });
-         }
+    }
 
     @Override
     public int getItemCount() {
