@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="facebook"
+    android:id="@+id/facebook_share"
+    android:icon="@drawable/facebook"/>
+    <item
+        android:title="Whats App"
+        android:id="@+id/whats_app_share"
+        android:icon="@drawable/whatsapp"/>
+    <item
+        android:title="Twitter"
+        android:id="@+id/twitter_share"
+        android:icon="@drawable/twitter"/>
+    <item
+        android:title="Instagram"
+        android:id="@+id/instagram_share"
+        android:icon="@drawable/instagram"/>
+</menu>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:title="DashBoard"
+            android:icon="@drawable/dashboard_icon"
+            android:id="@+id/dashboard_item"/>
+        <item
+            android:title="Statistics"
+            android:icon="@drawable/stats_icon"
+            android:id="@+id/statistics_item"/>
+        <item
+            android:title="Social Media"
+            android:icon="@drawable/manage_icon"
+            android:id="@+id/social_media_item"/>
+        <item
+            android:title="Funds"
+            android:icon="@drawable/rupee"
+            android:id="@+id/funds_item"/>
+        <item
+            android:title="Settings"
+            android:icon="@drawable/user_icon"
+            android:id="@+id/settings_item"
+            />
+        <item
+            android:title="Logout"
+            android:icon="@drawable/logout_icon"
+            android:id="@+id/logout_item"/>
+    </group>
+</menu>
