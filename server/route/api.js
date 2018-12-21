@@ -17,4 +17,13 @@ router.route('/ngo')
 router.route('/accept')
     .post(ngoContrl.acceptRequest);
 
+router.route('/request')
+    .post(reqContrl.addRequest)
+    .get(reqContrl.getRequests);
+
+
+router.route('/request/:name')
+    .get(reqContrl.getRequestOfNgo)
+
+
 module.exports = router
