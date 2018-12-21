@@ -23,8 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.gaurav.helfy.Adapter.OrdersAdapter;
-import com.example.gaurav.helfy.Model.Order;
+import com.collekarry.globlockhackthon.Adapter.OrdersAdapter;
+import com.collekarry.globlockhackthon.Model.Order;
 
 import org.json.JSONArray;
 
