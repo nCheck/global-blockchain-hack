@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetFunds"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/voilet_gradient"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <Spinner
+        android:id="@+id/reason"
+        android:paddingStart="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/orange_round"/>
+
+    <LinearLayout
+        android:id="@+id/otherBox"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/orange_round">
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/other"
+            android:layout_marginStart="20dp"
+            android:hint="Others (if reason not listed)"
+            android:textColorHint="@color/textGrey"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textSize="17sp"
+            android:maxLength="50"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@android:color/white"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/amountBox"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/orange_round">
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/amount"
+            android:layout_marginStart="20dp"
+            android:hint="Amount"
+            android:textColorHint="@color/textGrey"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textSize="17sp"
+            android:maxLength="50"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@android:color/white"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <Button
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:elevation="5dp"
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Release fund"
+        android:textColor="@android:color/white"
+        android:background="@drawable/blue_round_button"/>
+
+</LinearLayout>

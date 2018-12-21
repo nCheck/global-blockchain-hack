@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AddPost"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/custom_toolbar"/>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/tileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="495dp"
+            android:layout_marginEnd="288dp"
+            android:layout_marginStart="16dp"
+            android:text="Ttile :"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/tileEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/tileTextView"
+            app:layout_constraintStart_toEndOf="@+id/tileTextView"
+            app:layout_constraintTop_toTopOf="@+id/tileTextView" />
+
+        <ImageButton
+            android:id="@+id/image_button"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@android:color/background_light"
+            android:elevation="6dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tileEditText" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Description : "
+            app:layout_constraintStart_toStartOf="@+id/tileTextView"
+            app:layout_constraintTop_toBottomOf="@+id/image_button" />
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Enter the Description..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/descriptionTextView"
+            app:layout_constraintStart_toEndOf="@+id/descriptionTextView"
+            app:layout_constraintTop_toTopOf="@+id/descriptionTextView" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:padding="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
