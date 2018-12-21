@@ -17,15 +17,6 @@ module.exports.getRating = async (req, res)=>{
     res.send({rating : rating});
 
 
-
-    // Ngo.findOne({name : ngoName}, (err, ngo)=>{
-
-    //     if (!err)        
-    //     res.send({rating : ngo.rating});
-    //     else
-    //     res.send("Error");
-        
-    // })
 }
 
 module.exports.acceptRequest = async (req, res)=>{
@@ -36,15 +27,33 @@ module.exports.acceptRequest = async (req, res)=>{
     const contract = createContract();
 
     // await web3.eth.ngoReact(reqId, ngoId);
-    await contract.methods.ngoReact(reqId,ngoId).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
-    res.send({d:"Done"});
+    await contract.methods.ngoReact(1,1).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+
+    //get the updated rating to update in db
+    var rating = await contract.methods.getRating(1).call();
+
+    await Ngo.findById("5c1cd74a505ae43b03e227f5", (err, doc)=>{
+
+        if(!err){
+
+            doc.rating = rating;
+            doc.save();
+            res.send({d:"Done"});
+        }
+        else{
+            res.send({err : err})
+        }
+    } )
+
+
+    
 
 
 }
 
 
 
-module.exports.addNgo = (req, res)=>{
+module.exports.addNgo = async (req, res)=>{
 
     //Do update in blockchain too
 
@@ -57,9 +66,16 @@ module.exports.addNgo = (req, res)=>{
     
     Ngo.create({
         name : name, address : address, location : location
-    }, (err, doc)=>{
+    }, async (err, doc)=>{
 
-        //TODO: adding in blockchain
+        const contract = createContract();
+
+        // await web3.eth.ngoReact(reqId, ngoId);
+        var dummyNgo = "0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E";
+
+        await contract.methods.addNgo(ngoId,dummyNgo)
+            .send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+
         console.log(doc);
 
         res.send("Done")
