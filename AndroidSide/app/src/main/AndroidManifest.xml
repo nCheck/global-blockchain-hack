@@ -16,6 +16,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Home" />
+        <activity android:name=".Statistics" />
+        <activity android:name=".SocialMedia" />
+        <activity android:name=".AddPost" />
+        <activity android:name=".Detail" />
+        <activity android:name=".Funds" />
+        <activity android:name=".GetFunds" />
+        <activity android:name=".Register" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider270114340273364"
+            android:exported="true" />
+
+        <service
+            android:name=".ShareJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
     </application>
 
 </manifest>
