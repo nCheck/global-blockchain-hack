@@ -48,8 +48,9 @@ public class Funds extends AppCompatActivity {
         pieChart.setRotationEnabled(true);
         pieChart.setUsePercentValues(true);
         pieChart.setHoleColor(Color.WHITE);
-        pieChart.setCenterTextColor(Color.BLACK);
-        pieChart.setHoleRadius(25f);
+        pieChart.setCenterTextColor(Color.GRAY);
+        pieChart.setEntryLabelColor(Color.GRAY);
+        pieChart.setHoleRadius(50f);
         pieChart.getDescription().setText("Donation Based upon its type");
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setCenterText("Donation Type");
@@ -95,10 +96,10 @@ public class Funds extends AppCompatActivity {
 
         //add colors to dataset
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GREEN);
-        colors.add(Color.BLUE);
-        colors.add(Color.RED);
-        colors.add(Color.MAGENTA);
+        colors.add(getResources().getColor(R.color.pieBlue));
+        colors.add(getResources().getColor(R.color.pieGreen));
+        colors.add(getResources().getColor(R.color.pieYellow));
+        colors.add(getResources().getColor(R.color.pieOrange));
 
         pieDataSet.setColors(colors);
 

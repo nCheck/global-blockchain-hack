@@ -12,4 +12,8 @@
     <color name="textGrey">#464646</color>
     <color name="blue">#667EEA</color>
     <color name="green">#8BC34A</color>
+    <color name="pieBlue">#7DE7FE</color>
+    <color name="pieGreen">#BAFF7A</color>
+    <color name="pieYellow">#FEF87A</color>
+    <color name="pieOrange">#FCC779</color>
 </resources>
