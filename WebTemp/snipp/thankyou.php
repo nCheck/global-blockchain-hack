@@ -1,13 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-  <?php $type =  $_GET["type"];
+<html lang="en">   
+<?php
+  include 'connect.php';
+  $type =  $_GET["type"];
       $name =  $_GET["name"];
-      $date = $_GET["date"];
-      $email = $_GET["e-mail"];
-      $contact = $_GET["contact"];
-      $city = $_GET["city"];
+      $email = $_GET["email"];
+      $contact = (int)$_GET["contact"];
       $address = $_GET["address"]; 
-      ?>
+      $item = $_GET["item"]; 
+      $orgid = 0;
+      $status = "New";
+      $org = "Smile Foundation";
+      $timestamp = time();
+      $sql = "INSERT INTO orders (type, name, timestamp, email, org, status, address, contact, item, orgid) VALUES ('$type','$name','$timestamp','$email','$org','$status','$address','$contact','$item','$orgid')";
+      $result = mysqli_query($connect, $sql);
+  
+  		//$sqlid = "SELECT id FROM orders ORDER BY id DESC LIMIT 1";
+  		//$res = mysqli_query($connect, $sqlid);
+  		//$idval = mysqli_fetch_assoc($res);
+   
+  if(!$result)
+    {
+    	echo "error: ".mysqli_error($connect);
+    } else{
+      echo "Success";
+          $to = $email; 
+    $from = 'info@helfy.com'; 
+    $first_name = $name;
+    $subject = "Doantion to ".$org." Added Successfully";
+    $message = "Hey, ".$name.".  We have sent your donation to the ".$org.". Once we get a confirmation from them, we will notify you and process will started. Until then stay tuned to the channel of Happiness via there Social Media Accounts. Click on the below link to confirm the donation http://therishabhsingh.com/helfy/confirm.php?id=4";
+    $headers = "From:" . $from;
+    mail($to,$subject,$message,$headers);
+    }
+?>
+
+<!DOCTYPE html>
+<head>
+<title>Form submission</title>
+</head>
+<body>
+
+<form action="" method="post">
+First Name: <input type="text" name="first_name"><br>
+Last Name: <input type="text" name="last_name"><br>
+Email: <input type="text" name="email"><br>
+Message:<br><textarea rows="5" name="message" cols="30"></textarea><br>
+<input type="submit" name="submit" value="Submit">
+</form>
+
+</body>
   <head>
     <title>Helfy</title>
     <meta charset="utf-8">
@@ -35,7 +76,6 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">Helfy</a>
@@ -48,7 +88,7 @@
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Donations</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="portfolio.html">Monetary</a>
@@ -58,74 +98,25 @@
   
                 </div>
             </li>
-            <li class="nav-item"><a href="blog.html" class="nav-link">Organizations</a></li>
+            <li class="nav-item active"><a href="blog.html" class="nav-link">Organizations</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Get in touch</span></a></li>
           </ul>
         </div>
       </div>
-    </nav>    
+    </nav>
     <div class="hero-wrap js-fullheight">
       <div class="overlay"></div>
       <div id="particles-js"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Food</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Success</a></span>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Thanks for your helping hand, We will contact you via email for further engagements :)</h1>
           </div>
         </div>
       </div>
     </div>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row no-gutters justify-content-center mb-5 pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-4">Enter your Details</h2>
-              
-                               <div class="form-group">
-                                  <input id="typeID" class="form-control" placeholder="Name" name="name" value="food" required style="border-radius:5px;">
-                              </div>
-                             
-                              <div class="form-group">
-                                  <input id="fromId" type="text" class="form-control"  placeholder="From" name="contact" required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input  id="toID" type="text" class="form-control"  placeholder="To" name="city" required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input id="locID" type="text" class="form-control"  placeholder="Location" name="address" required style="border-radius:5px;">
-                              </div>
-                              <button id="bbutton" type="submit" name="submit" class="btn btn-primary" style="align:center;" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
-                          
-                      </div>
-              </div>
-          </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background:#e83e8c;" >
-              <h3 class="modal-title" id="exampleModalCenterTitle" style="color:white;">Thank You!!</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
-                <span aria-hidden="true">&times;</span>
-              
-              </button>
-            </div>
-            <div class="modal-body" style="font-size: 25px;" >
-              We have received your request<br>
-              You Will be soon contacted by Smile baby <br>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> 
-            </div>
-          </div>
-        </div>
-      </div>    
-
-
-    
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
@@ -171,13 +162,13 @@
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-
             <p>
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
           </div>
         </div>
       </div>
     </footer>
+    
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 

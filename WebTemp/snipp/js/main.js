@@ -299,3 +299,18 @@
 $('#myModal').on('shown.bs.modal', function () {
 	$('#myInput').trigger('focus')
   })
+
+  $("#bbutton").click(function(event){
+	$.post( 
+	   "http://192.168.43.141:9966/api/request",
+	   { 
+		   type: $("#typeID").val(),
+		   from:$("#fromId").val(),
+		   to:$("#toID").val(),
+		   location:$("#locID").val() 
+		},
+	   function(data) {
+		  console.log();
+	   }
+	);
+ });  

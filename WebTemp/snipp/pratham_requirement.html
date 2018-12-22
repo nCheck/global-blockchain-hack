@@ -51,11 +51,10 @@
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Donations</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="portfolio.html">Monetary</a>
+                  <a class="dropdown-item" href="portfolio.html">Monitary</a>
                   <a class="dropdown-item" href="portfolio-single.html">Clothes</a>
                   <a class="dropdown-item" href="donation2.html">Food</a>
                   <a class="dropdown-item" href="donation3.html">Others</a>
-  
                 </div>
             </li>
             <li class="nav-item"><a href="blog.html" class="nav-link">Organizations</a></li>
@@ -71,8 +70,9 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Food</h1>
+              <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Pratham</a></span> <span class="mr-2"></span></p>
+              <p> Pratham is an educational institute, you can donate anything that can help children learn more.</p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Donation Page</h1>
           </div>
         </div>
       </div>
@@ -81,51 +81,42 @@
       <div class="container">
         <div class="row no-gutters justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-4">Enter your Details</h2>
-              
-                               <div class="form-group">
-                                  <input id="typeID" class="form-control" placeholder="Name" name="name" value="food" required style="border-radius:5px;">
-                              </div>
-                             
+            <h2 class="mb-4">Fill this form, to Share a smile :)</h2>
+                          <form  action="thankyou.php" method="GET">
                               <div class="form-group">
-                                  <input id="fromId" type="text" class="form-control"  placeholder="From" name="contact" required style="border-radius:5px;">
+                                  <select class="form-control" placeholder="Type" name="type" value="Clothes" required style="border-radius:5px;">
+                                    <option value="volvo">Pencils</option>
+                                    <option value="saab">Notebooks</option>
+                                    <option value="fiat">Lunchbox</option>
+                                    <option value="audi">uniforms</option>
+                                  </select> 
+                              </div>
+                            <div class="form-group">
+                                  <input type="text" class="form-control"  placeholder="description"  name="description" required style="border-radius:5px;">
                               </div>
                               <div class="form-group">
-                                  <input  id="toID" type="text" class="form-control"  placeholder="To" name="city" required style="border-radius:5px;">
+                                  <input class="form-control" placeholder="Name" name="name"  required style="border-radius:5px;">
                               </div>
                               <div class="form-group">
-                                  <input id="locID" type="text" class="form-control"  placeholder="Location" name="address" required style="border-radius:5px;">
+                                  <input type="date" class="form-control" placeholder="Date" name="date"  required style="border-radius:5px;">
                               </div>
-                              <button id="bbutton" type="submit" name="submit" class="btn btn-primary" style="align:center;" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
-                          
+                              <div class="form-group">
+                                  <input type="email" class="form-control"  placeholder="Email"  name="email" required style="border-radius:5px;">
+                              </div>
+                              <div class="form-group">
+                                  <input type="text" class="form-control"  placeholder="Contact" maxlength="10" size="10" name="contact" required style="border-radius:5px;">
+                              </div>
+                              <div class="form-group">
+                                  <input  type="text" class="form-control"  placeholder="City" name="city" required style="border-radius:5px;">
+                              </div>
+                              <div class="form-group">
+                                  <input  type="text" class="form-control"  placeholder="Address" name="address" required style="border-radius:5px;">
+                              </div>
+                              <a href="thankyou.php"><button type="submit" name="submit" class="btn btn-primary" style="align:center;">Submit</button></a>
+                          </form>
                       </div>
               </div>
           </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background:#e83e8c;" >
-              <h3 class="modal-title" id="exampleModalCenterTitle" style="color:white;">Thank You!!</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
-                <span aria-hidden="true">&times;</span>
-              
-              </button>
-            </div>
-            <div class="modal-body" style="font-size: 25px;" >
-              We have received your request<br>
-              You Will be soon contacted by Smile baby <br>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> 
-            </div>
-          </div>
-        </div>
-      </div>    
-
-
-    
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
