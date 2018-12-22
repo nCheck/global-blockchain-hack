@@ -17,7 +17,7 @@ contract Donation {
     mapping(uint => uint) public rating;
     mapping(uint => address) public ngo;
     mapping(uint => donation) public donationStart;
-    //mapping(address => uint) public balances;
+    mapping(uint => uint) public balances;
     
     event userDonatedAt(
         uint id
@@ -35,6 +35,7 @@ contract Donation {
         require(msg.sender == owner, "Sender is not owner");
         ngo[_id] = add;
         rating[_id] = 0;
+        balances[_id] = 10000;
 
     }
     
@@ -52,6 +53,7 @@ contract Donation {
         uint curr = now;
         uint hist = donationStart[did].time;
         
+        require(donationStart[did].status == Status.Pending, "Can't react again" );
         require(hist != 0, "negative history");
         
         uint duration = curr - hist;
@@ -68,6 +70,25 @@ contract Donation {
     function interact(uint ngoId) public {
         rating[ngoId] += 1;
     }
+    
+    
+    function transanct(int amount, uint ngoId) public{
+        
+        int update = int(balances[ngoId]) + amount;
+        
+        require( update > 0 , "Insufficient Fund" );
+        
+        balances[ngoId] = uint(update);
+        
+    }
+    
+    
+    function getBalance(uint ngoId) public view returns(uint) {
+        
+        return balances[ngoId];
+    }
+
+
 
     
 

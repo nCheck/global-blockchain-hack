@@ -33,4 +33,11 @@ router.route('/interact/:ngoid')
     .post(ngoContrl.interact);
 
 
+router.route('/balance/:ngoid')
+    .get(ngoContrl.getBalance);
+
+
+router.route('/transact')
+    .post(ngoContrl.transanct);
+
 module.exports = router

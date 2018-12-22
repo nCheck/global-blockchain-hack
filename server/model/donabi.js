@@ -58,6 +58,24 @@ module.exports = [
 		"constant": false,
 		"inputs": [
 			{
+				"name": "amount",
+				"type": "int256"
+			},
+			{
+				"name": "ngoId",
+				"type": "uint256"
+			}
+		],
+		"name": "transanct",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
 				"name": "did",
 				"type": "uint256"
 			}
@@ -111,6 +129,25 @@ module.exports = [
 				"type": "uint256"
 			}
 		],
+		"name": "balances",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"name": "donationStart",
 		"outputs": [
 			{
@@ -120,6 +157,25 @@ module.exports = [
 			{
 				"name": "status",
 				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "ngoId",
+				"type": "uint256"
+			}
+		],
+		"name": "getBalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,

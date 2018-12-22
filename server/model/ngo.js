@@ -14,6 +14,11 @@ var ngoSchema = new Schema({
         default : 0.0
     },
 
+    amount : {
+        type : Number,
+        default : 10000
+    } , 
+
     address : String,
 
     location: {

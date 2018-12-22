@@ -28,26 +28,39 @@ module.exports.acceptRequest = async (req, res)=>{
         console.log("updated!")
     })
 
-    const contract = createContract();
+    try{
+
+        const contract = createContract();
 
 
-    await contract.methods.ngoReact(reqId,ngoId).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+        await contract.methods.ngoReact(reqId,ngoId)
+            .send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+    
+        //get the updated rating to update in db
+        var rating = await contract.methods.getRating(70).call();
+    
+        await Ngo.findById("5c1cd74a505ae43b03e227f5", (err, doc)=>{
+    
+            if(!err){
+    
+                doc.rating = rating; //TODO
+                doc.save();
+                res.send({status:"Done" , rating : rating});
+            }
+            else{
+                res.send({err : err})
+            }
+        } )
+    
 
-    //get the updated rating to update in db
-    var rating = await contract.methods.getRating(70).call();
+    }
 
-    await Ngo.findById("5c1cd74a505ae43b03e227f5", (err, doc)=>{
+    catch{
 
-        if(!err){
+        res.send({err : "Invalid Transaction"});
 
-            doc.rating = rating; //TODO
-            doc.save();
-            res.send({status:"Done" , rating : rating});
-        }
-        else{
-            res.send({err : err})
-        }
-    } )
+    }
+
 
 
 }
@@ -115,3 +128,49 @@ module.exports.interact = async (req, res)=>{
     res.send({updatedRating : rating});
 
 }
+
+
+
+
+
+
+//////New Features
+
+
+module.exports.getBalance = async (req, res)=>{
+
+    var ngoId = req.params.ngoid;
+    const contract = createContract();
+
+    var balance = await contract.methods.getBalance(ngoId).call()
+
+    res.send({ngoId : ngoId, balance : balance});
+
+
+}
+
+module.exports.transanct = async (req, res)=>{
+
+    try{
+
+        var amount = req.body.amount,
+            ngoId = req.body.ngoid;
+
+        const contract = createContract();
+
+        await contract.methods.transanct(amount, ngoId)
+            .send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+        
+        var balance = await contract.methods.getBalance(ngoId).call()
+        
+        res.send({status : "sucess", updatedBalance : balance});
+
+    }
+    catch{
+
+        res.send({status : "fail"});
+
+    }
+}
+
+
