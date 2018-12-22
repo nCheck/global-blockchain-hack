@@ -17,6 +17,10 @@ router.route('/ngo')
 router.route('/accept')
     .post(ngoContrl.acceptRequest);
 
+router.route('/reject/:reqid')
+.post(ngoContrl.rejectRequest);
+
+
 router.route('/request')
     .post(reqContrl.addRequest)
     .get(reqContrl.getRequests);
@@ -24,6 +28,9 @@ router.route('/request')
 
 router.route('/request/:name')
     .get(reqContrl.getRequestOfNgo)
+
+router.route('/interact/:ngoid')
+    .post(ngoContrl.interact);
 
 
 module.exports = router

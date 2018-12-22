@@ -19,14 +19,14 @@ module.exports = [
 	},
 	{
 		"constant": false,
-		"inputs": [],
-		"name": "getRating",
-		"outputs": [
+		"inputs": [
 			{
-				"name": "",
-				"type": "uint256[]"
+				"name": "ngoId",
+				"type": "uint256"
 			}
 		],
+		"name": "interact",
+		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -158,44 +158,6 @@ module.exports = [
 			{
 				"name": "",
 				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "ngoIDList",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "ngoRatings",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
 			}
 		],
 		"payable": false,

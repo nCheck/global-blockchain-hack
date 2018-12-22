@@ -7,7 +7,7 @@ var Ngo = mongoose.model('Ngo'),
 
 
 
-//Counter.create({});
+Counter.create({});
 
 // Ngo.create({
 //     name : "Smile Baby",
@@ -30,7 +30,7 @@ var Ngo = mongoose.model('Ngo'),
 //     res.save();
 // });
 
-Request.findById('5c1cd1b4a7f3aa3799c45675', (err,res)=>{
-    res.save();
-    console.log(res);
-})
+// Request.findById('5c1cd1b4a7f3aa3799c45675', (err,res)=>{
+//     res.save();
+//     console.log(res);
+// })

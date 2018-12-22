@@ -63,6 +63,11 @@ contract Donation {
         emit ngoReacted(duration);
         return duration;
     }
+    
+    
+    function interact(uint ngoId) public {
+        rating[ngoId] += 1;
+    }
 
     
 

@@ -13,7 +13,7 @@ module.exports.getRating = async (req, res)=>{
     //Actually get from Blockchain
     const contract = createContract();
 
-    var rating = await contract.methods.getRating(1).call();
+    var rating = await contract.methods.getRating(70).call();
     res.send({rating : rating});
 
 
@@ -24,18 +24,17 @@ module.exports.acceptRequest = async (req, res)=>{
     var reqId = req.body.reqid,
         ngoId = req.body.ngoid;
     
-    await Request.findOne({reqId : reqId}, (err, doc)=>{
-        doc.status = 'Accepted';
-        doc.save();
+    await Request.findOneAndUpdate({reqId : reqId}, { $set: { status: 'Accepted' }}, (err, doc)=>{
+        console.log("updated!")
     })
 
     const contract = createContract();
 
 
-    await contract.methods.ngoReact(1,1).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+    await contract.methods.ngoReact(reqId,ngoId).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
 
     //get the updated rating to update in db
-    var rating = await contract.methods.getRating(1).call();
+    var rating = await contract.methods.getRating(70).call();
 
     await Ngo.findById("5c1cd74a505ae43b03e227f5", (err, doc)=>{
 
@@ -43,7 +42,7 @@ module.exports.acceptRequest = async (req, res)=>{
 
             doc.rating = rating; //TODO
             doc.save();
-            res.send({d:"Done"});
+            res.send({status:"Done" , rating : rating});
         }
         else{
             res.send({err : err})
@@ -51,11 +50,19 @@ module.exports.acceptRequest = async (req, res)=>{
     } )
 
 
-    
-
-
 }
 
+//////
+
+module.exports.rejectRequest = (req , res)=>{
+
+    var id = req.params.reqid;
+
+    Request.findOneAndUpdate({reqId : id}, { $set: { status: 'Rejected' }} , (err, doc)=>{
+        console.log("Rejected");
+        res.send({status : "Rejected"});
+    } )
+}
 
 
 module.exports.addNgo = async (req, res)=>{
@@ -91,4 +98,20 @@ module.exports.getNgos = (req, res)=>{
         res.send(doc);
         
     })
+}
+
+
+module.exports.interact = async (req, res)=>{
+    
+    var ngoId = req.params.ngoid;
+
+    const contract = createContract();
+
+
+    await contract.methods.interact(ngoId).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
+
+    var rating = await contract.methods.getRating(ngoId).call();
+
+    res.send({updatedRating : rating});
+
 }

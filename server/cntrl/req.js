@@ -13,7 +13,7 @@ module.exports.addRequest = async (req, res)=>{
         from = req.body.from,
         to = req.body.to,
         location = req.body.location
-    
+
     Request.create({
         reqType : reqType,
         from : from,
@@ -29,7 +29,7 @@ module.exports.addRequest = async (req, res)=>{
         // registering request
         await contract.methods.userDonate(doc.reqId).send({from : '0xb1d04265d4f578fc7c38161FeA26a1F0D7d83C2E' });
 
-        res.send({status : "Done"})
+        res.send({status : "Done" , id : doc.reqId})
     
 
         }
@@ -66,3 +66,4 @@ module.exports.getRequests = (req, res)=>{
         }
     })
 }
+
