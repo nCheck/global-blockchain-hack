@@ -76,72 +76,66 @@
         <div class="row no-gutters justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
             <h2 class="mb-4">Enter your Details</h2>
-                          <form  action="ngo.php" method="GET">
-                              <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Name" name="name"  required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Amount" name="amount"  required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input type="date" class="form-control" placeholder="Date" name="date"  required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input type="email" class="form-control"  placeholder="Email"  name="e-mail" required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input type="text" class="form-control"  placeholder="Contact" maxlength="10" size="10" name="contact" required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input  type="text" class="form-control"  placeholder="City" name="city" required style="border-radius:5px;">
-                              </div>
-                              <div class="form-group">
-                                  <input   type="text" class="form-control" placeholder="Address" name="address" required style="border-radius:5px;">
-                              </div>
+                          
+                            <div class="form-group">
+                              <input id="typeID" class="form-control" placeholder="Name" name="name" value="food" required style="border-radius:5px;">
+                          </div>
+                        
+                          <div class="form-group">
+                              <input id="fromId" type="text" class="form-control"  placeholder="From" name="contact" required style="border-radius:5px;">
+                          </div>
+                          <div class="form-group">
+                              <input  id="toID" type="text" class="form-control"  placeholder="To" name="city" required style="border-radius:5px;">
+                          </div>
+                          <div class="form-group">
+                              <input id="locID" type="text" class="form-control"  placeholder="Location" name="address" required style="border-radius:5px;">
+                          </div>
+                         
                               <h5>Payment Method</h5>
-<label class="container">
-  <input type="radio"  name="radio">
-  Credit/Debit
-  <span class="checkmark"></span>
-  <input type="radio" name="radio">
-  PayPal
-  <span class="checkmark"></span>
-  <input type="radio" name="radio">
-  Paytm
-  <span class="checkmark"></span>
-  <input type="radio" name="radio">
-  GooglePay
-  <span class="checkmark"></span>
-</label>
-                             <a data-toggle="modal" data-target="#exampleModalCenter"><button type="submit" name="submit" class="btn btn-primary" style="align:center;">Submit</button></a>
-                          </form>
+
+                          <label class="container">
+                            <input type="radio"  name="radio">
+                            Credit/Debit
+                            <span class="checkmark"></span>
+                            <input type="radio" name="radio">
+                            PayPal
+                            <span class="checkmark"></span>
+                            <input type="radio" name="radio">
+                            Paytm
+                            <span class="checkmark"></span>
+                            <input type="radio" name="radio">
+                            GooglePay
+                            <span class="checkmark"></span>
+                          </label>
+
+                          <button id="bbutton" type="submit" name="submit" class="btn btn-primary" style="align:center;" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
+                                                
                       </div>
                   
               </div>
           </div>
 
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background:#ffc9fc;">
-              <h5 class="modal-title" id="exampleModalCenterTitle">The Donation request has been received</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background:#e83e8c;" >
+                  <h3 class="modal-title" id="exampleModalCenterTitle" style="color:white;">Thank You!!</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
+                    <span aria-hidden="true">&times;</span>
+                  
+                  </button>
+                </div>
+                <div class="modal-body" style="font-size: 25px;" >
+                  We have received your request<br>
+                  You Will be soon contacted by Smile baby <br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> 
+                </div>
+              </div>
             </div>
-            <div class="modal-body" style="font-size: 25px;" >
-              You Will receive a mail on this request!! <br>
-              Thank You!!
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> 
-            </div>
-          </div>
-        </div>
-      </div>    
-
+          </div>    
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
